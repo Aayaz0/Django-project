@@ -8,7 +8,7 @@ class Student(models.Model):
     full_name = models.CharField(max_length=100)
     roll_number = models.CharField(max_length=20, unique=True)
 
-    def _str_(self):
+    def __str__(self):
         return f"{self.full_name} ({self.roll_number})"
 
 
@@ -18,7 +18,7 @@ class Teacher(models.Model):
     full_name = models.CharField(max_length=100)
     subject_speciality = models.CharField(max_length=100)
 
-    def _str_(self):
+    def __str__(self):
         return self.full_name
 
 
@@ -29,7 +29,7 @@ class Course(models.Model):
     teacher = models.ForeignKey(Teacher, on_delete=models.SET_NULL, null=True, blank=True, related_name='courses')
     students = models.ManyToManyField(Student, related_name='courses')  # many-to-many with students
 
-    def _str_(self):
+    def __str__(self):
         return f"{self.name} ({self.code})"
 
 
@@ -42,5 +42,5 @@ class Result(models.Model):
     class Meta:
         unique_together = ('student', 'course')  # Prevent duplicate result entry
 
-    def _str_(self):
+    def __str__(self):
         return f"{self.student.full_name} - {self.course.name}: {self.marks_obtained}"

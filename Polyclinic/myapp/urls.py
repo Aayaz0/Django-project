@@ -11,5 +11,6 @@ urlpatterns = [
     path('student-dashboard/', views.student_dashboard, name='student_dashboard'),
     path('add_result/', views.add_result, name='add_result'),
     path('view-results/', views.view_results, name='view_results'),
-
+    path('edit_result/<int:result_id>/', views.edit_result, name='edit_result'),
+    path('delete_result/<int:result_id>/', views.delete_result, name='delete_result'),
 ]

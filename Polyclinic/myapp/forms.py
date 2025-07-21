@@ -25,7 +25,7 @@ class ResultForm(forms.ModelForm):
         model = Result
         fields = ['student', 'course', 'marks_obtained']
 
-    def _init_(self, teacher=None, *args, **kwargs):
+    def __init__(self, teacher=None, *args, **kwargs):
         super(ResultForm, self).__init__(*args, **kwargs)
         if teacher:
             self.fields['course'].queryset = Course.objects.filter(teacher=teacher)
@@ -37,6 +37,6 @@ class ResultForm(forms.ModelForm):
 class ResultSearchForm(forms.Form):
     course = forms.ModelChoiceField(queryset=Course.objects.none(), label="Select Course")
 
-    def _init_(self, student, *args, **kwargs):
+    def __init__(self, student, *args, **kwargs):
         super(ResultSearchForm, self).__init__(*args, **kwargs)
         self.fields['course'].queryset = student.courses.all()
