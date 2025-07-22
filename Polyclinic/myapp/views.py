@@ -109,7 +109,7 @@ def add_result(request):
             form.save()
             messages.success(request, 'Result added successfully!')
             return redirect('view_results')
-    else:
+    else:pip freeze > requirements.txt
         form = ResultForm(teacher=teacher)
 
     return render(request, 'add_result.html', {'form': form})
